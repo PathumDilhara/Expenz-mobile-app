@@ -1,3 +1,4 @@
+import 'package:f20_expenz_mobile_app/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,20 +10,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: "Expenz",
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            "Hello",
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+      theme: ThemeData(
+        fontFamily: "Inter",
       ),
+      debugShowCheckedModeBanner: false,
+      home: const OnBoardingScreen(),
     );
   }
 }
