@@ -42,4 +42,12 @@ class UserServices {
       err.toString();
     }
   }
+
+  // method to check whether the userName is saved in the shared preferences
+  static Future <bool> checkUserName() async {
+    // create an instance for shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? userName = prefs.getString("userName");
+    return userName != null; // if has a userName ---> true otherwise(if null)(!=) false
+  }
 }
