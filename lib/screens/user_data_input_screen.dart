@@ -2,6 +2,9 @@ import 'package:f20_expenz_mobile_app/constants/colors.dart';
 import 'package:f20_expenz_mobile_app/widgets/rounded_custom_button.dart';
 import 'package:flutter/material.dart';
 
+import '../services/user_services.dart';
+import 'main_screen.dart';
+
 class UserDataInputScreen extends StatefulWidget {
   const UserDataInputScreen({super.key});
 
@@ -34,6 +37,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double radius = 15;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -46,7 +50,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                   "Enter your \nPersonal Details",
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                     color: kBlack,
                   ),
                 ),
@@ -73,7 +77,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                         decoration: InputDecoration(
                             hintText: "Name",
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(radius)),
                             contentPadding: const EdgeInsets.all(10)),
                       ),
                       const SizedBox(
@@ -92,7 +96,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                         decoration: InputDecoration(
                             hintText: "Email",
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(radius)),
                             contentPadding: const EdgeInsets.all(10)),
                       ),
                       const SizedBox(
@@ -111,7 +115,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                         decoration: InputDecoration(
                             hintText: "Password",
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(100)),
+                                borderRadius: BorderRadius.circular(radius)),
                             contentPadding: const EdgeInsets.all(10)),
                       ),
                       const SizedBox(
@@ -124,15 +128,13 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                           // check whether the user entered value/name is empty
                           if (value!.isEmpty) {
                             return "Please enter  same password";
-                          } else if(_confirmPasswordController.text != _passwordController.text){
-                            return "Password is not match";
                           }
                         },
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: "Confirm Password",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(100),
+                            borderRadius: BorderRadius.circular(radius),
                           ),
                           contentPadding: const EdgeInsets.all(10),
                         ),
@@ -154,10 +156,10 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                           Expanded(
                             child: CheckboxListTile(
                               activeColor: kMainColor,
-                              value: _rememberMe,
+                              value: _rememberMe, // assign true or false to value
                               onChanged: (value) {
                                 setState(() {
-                                  _rememberMe = value!; // opposite of value
+                                  _rememberMe = value!; // opposite of above assigned value if true ---> false(if tik ok then tik for checkbox)
                                 });
                               },
                             ),
@@ -169,7 +171,7 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                       ),
                       // Submit Button
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
                           if (_formKey.currentState!.validate()) {
                             // form is valid, process data
                             String userName = _userNameController.text;
@@ -179,6 +181,20 @@ class _UserDataInputScreenState extends State<UserDataInputScreen> {
                                 _confirmPasswordController.text;
 
                             // use these validated data for your work store or any
+                            // save the user name and email in device
+                            await UserServices.storeUserDetails(
+                              userName: userName,
+                              email: email,
+                              password: password,
+                              confirmPassword: confirmPassword,
+                              context: context,
+                            );
+
+                            // Navigate to the main screen
+                            if (context.mounted && (password == confirmPassword)) {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const MainScreen(),),);
+                            }
                           }
                         },
                         child: const RoundedCustomButton(
