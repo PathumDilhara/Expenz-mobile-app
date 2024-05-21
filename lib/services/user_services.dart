@@ -50,4 +50,14 @@ class UserServices {
     String? userName = prefs.getString("userName");
     return userName != null; // if has a userName ---> true otherwise(if null)(!=) false
   }
+
+  // get the user name and email
+  static Future<Map<String, String>> getUserData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    String? userName = pref.getString("userName");
+    String? email = pref.getString("email");
+
+    return {"userName" : userName!, "email" : email!}; // since null cant be returned use '!'
+  }
 }

@@ -5,8 +5,8 @@ import 'package:f20_expenz_mobile_app/widgets/rounded_custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import 'onboarding_screens/front_page.dart';
-import 'onboarding_screens/shared_onboarding_screen.dart';
+import 'onboarding_screens_widgets/front_page.dart';
+import 'onboarding_screens_widgets/shared_onboarding_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
