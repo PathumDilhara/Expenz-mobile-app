@@ -21,9 +21,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
+      AddNewScreen(),
       HomeScreen(),
       TransactionScreen(),
-      AddNewScreen(),
+
       BudgetScreen(),
       ProfileScreen(),
     ];
