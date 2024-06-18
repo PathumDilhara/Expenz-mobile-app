@@ -1,10 +1,11 @@
-import 'package:f20_expenz_mobile_app/constants/colors.dart';
-import 'package:f20_expenz_mobile_app/screens/main_screen_navigation_screens/add_new_screen.dart';
-import 'package:f20_expenz_mobile_app/screens/main_screen_navigation_screens/budget_screen.dart';
-import 'package:f20_expenz_mobile_app/screens/main_screen_navigation_screens/home_screen.dart';
-import 'package:f20_expenz_mobile_app/screens/main_screen_navigation_screens/profile_screen.dart';
-import 'package:f20_expenz_mobile_app/screens/main_screen_navigation_screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/colors.dart';
+import 'main_screen_navigation_screens/add_new_screen.dart';
+import 'main_screen_navigation_screens/budget_screen.dart';
+import 'main_screen_navigation_screens/home_screen.dart';
+import 'main_screen_navigation_screens/profile_screen.dart';
+import 'main_screen_navigation_screens/transaction_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -21,12 +22,12 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-      AddNewScreen(),
-      HomeScreen(),
-      TransactionScreen(),
+      const AddNewScreen(),
+      const HomeScreen(),
+      const TransactionScreen(),
 
-      BudgetScreen(),
-      ProfileScreen(),
+      const BudgetScreen(),
+      const ProfileScreen(),
     ];
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
@@ -45,33 +46,33 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.list_rounded),
             label: "Transaction",
           ),
           BottomNavigationBarItem(
               icon: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kMainColor,
                   shape: BoxShape.circle,
                 ),
-                padding: EdgeInsets.all(10),
-                child: Icon(
+                padding: const EdgeInsets.all(10),
+                child: const Icon(
                   Icons.add,
                   color: kWhite,
                   size: 30,
                 ),
               ),
               label: ""),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.rocket),
             label: "Budget",
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "profile",
           ),

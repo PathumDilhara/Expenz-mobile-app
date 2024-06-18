@@ -10,8 +10,8 @@ class TransactionScreen extends StatefulWidget {
 class _TransactionScreenState extends State<TransactionScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Text("Transaction Screen"),
+    return const Scaffold(
+      body: Center(child: Text("Transaction Screen")),
     );
   }
 }

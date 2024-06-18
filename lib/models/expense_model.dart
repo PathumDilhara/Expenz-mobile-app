@@ -20,11 +20,11 @@ final Map<ExpenseCategory, String> expenseCategoryImages = {
 
 // category colors
 final Map<ExpenseCategory, Color> categoryColors = {
-  ExpenseCategory.food : const Color(0xFFE57373),
-  ExpenseCategory.transport : const Color(0xFF81C784),
-  ExpenseCategory.health : const Color(0xFF64B5F6),
-  ExpenseCategory.shopping : const Color(0xFFFFD54F),
-  ExpenseCategory.subscription : const Color(0xFF9575CD),
+  ExpenseCategory.food: const Color(0xFFE57373),
+  ExpenseCategory.transport: const Color(0xFF81C784),
+  ExpenseCategory.health: const Color(0xFF64B5F6),
+  ExpenseCategory.shopping: const Color(0xFFFFD54F),
+  ExpenseCategory.subscription: const Color(0xFF9575CD),
 };
 
 // model for expense
@@ -46,4 +46,30 @@ class Expense {
     required this.time,
     required this.description,
   });
+
+  // Convert Expense obj to JSON obj/format / JSON Serialization
+  Map<String, dynamic> toJSON() {
+    return {
+      "id": id,
+      "title": title,
+      "amount": amount,
+      "category": category.index,
+      "date": date.toIso8601String(),
+      "time": time.toIso8601String(),
+      "description": description,
+    };
+  }
+
+  // Create Expense obj from JSON obj / JSON Deserialization
+  factory Expense.fromJSON(Map<String, dynamic> json) {
+    return Expense(
+      id: json["id"],
+      title: json ["title"],
+      amount: json ["amount"],
+      category: ExpenseCategory.values[json["category"]], //  we stored category as index
+      date: DateTime.parse(json["Date"]),
+      time: DateTime.parse(json["time"]),
+      description: json ["description"],
+    );
+  }
 }

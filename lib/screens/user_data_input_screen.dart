@@ -1,8 +1,8 @@
-import 'package:f20_expenz_mobile_app/constants/colors.dart';
-import 'package:f20_expenz_mobile_app/widgets/rounded_custom_button.dart';
 import 'package:flutter/material.dart';
 
+import '../constants/colors.dart';
 import '../services/user_services.dart';
+import '../widgets/rounded_custom_button.dart';
 import 'main_screen.dart';
 
 class UserDataInputScreen extends StatefulWidget {

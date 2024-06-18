@@ -1,7 +1,9 @@
-import 'package:f20_expenz_mobile_app/constants/colors.dart';
-import 'package:f20_expenz_mobile_app/services/user_services.dart';
-import 'package:f20_expenz_mobile_app/widgets/income_expence_card.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../constants/colors.dart';
+import '../../services/user_services.dart';
+import '../../widgets/income_expence_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

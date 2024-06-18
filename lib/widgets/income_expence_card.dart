@@ -1,5 +1,6 @@
-import 'package:f20_expenz_mobile_app/constants/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../constants/colors.dart';
 
 class IncomeExpenseCard extends StatefulWidget {
   final String title;

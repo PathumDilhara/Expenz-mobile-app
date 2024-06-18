@@ -1,8 +1,8 @@
-import 'package:f20_expenz_mobile_app/screens/onboarding_screen.dart';
-import 'package:f20_expenz_mobile_app/services/user_services.dart';
-import 'package:f20_expenz_mobile_app/widgets/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'services/user_services.dart';
+import 'widgets/wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

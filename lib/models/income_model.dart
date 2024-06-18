@@ -43,4 +43,30 @@ class Income {
     required this.time,
     required this.description,
   });
+
+  // Convert Expense obj to JSON obj/format / JSON Serialization
+  Map<String, dynamic> toJSON() {
+    return {
+      "id": id,
+      "title": title,
+      "amount": amount,
+      "category": category.index,
+      "date": date.toIso8601String(),
+      "time": time.toIso8601String(),
+      "description": description,
+    };
+  }
+
+  // Create Expense obj from JSON obj / JSON Deserialization
+  factory Income.fromJSON(Map<String, dynamic> json) {
+    return Income(
+      id: json["id"],
+      title: json ["title"],
+      amount: json ["amount"],
+      category: IncomeCategory.values[json["category"]], //  we stored category as index
+      date: DateTime.parse(json["Date"]),
+      time: DateTime.parse(json["time"]),
+      description: json ["description"],
+    );
+  }
 }

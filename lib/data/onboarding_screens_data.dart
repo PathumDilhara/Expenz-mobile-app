@@ -1,4 +1,5 @@
-import 'package:f20_expenz_mobile_app/models/onboarding_screens_model.dart';
+
+import '../models/onboarding_screens_model.dart';
 
 class OnBoardingScreensData {
   static final List<OnBoardingScreensModel> onBoardingScreensData = [

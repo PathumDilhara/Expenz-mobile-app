@@ -1,7 +1,7 @@
-import 'package:f20_expenz_mobile_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/constants.dart';
 
 class SharedOnBoardingScreen extends StatelessWidget {
   final String title;
